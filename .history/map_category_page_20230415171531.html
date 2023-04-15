@@ -28,12 +28,7 @@
         var map = new 
         google.maps.Map(document.getElementById('map'), options);
 
-        // listen for click on map
-        google.maps.event.addListener(map, 'click', 
-        function(event){
-            // add marker
-            addMarker({coords: event.latLng})
-        });
+
 
         /*
         // add marker
@@ -54,28 +49,13 @@
 
 
 
-        // array of markers
-        var markers = [
-        { 
+
+
+
+        addMarker( { 
             coords: {lat: 41.87225, lng: -87.64927},
-            content: '<h1> Uic Quad </h1>',
-            location_name: "Uic Quad"
-        },
-
-        { 
-            coords: {lat: 41.87281, lng: -87.64638},
-            content: '<h1> Uic Rec </h1>',
-            location_name: "Uic rec"
-        }
-
-        ];
-
-        // loop through markers
-        for(var i = 0; i < markers.length; i++){
-            // add marker
-            addMarker(markers[i]);
-        }
-
+            content: '<h1> Info </h1>'
+        });
 
        //add marker function
        function addMarker(props){
