@@ -22,40 +22,26 @@
         // map options
         var options = {
             zoom: 17,
-            center: {lat: 41.87225, lng: -87.64927}
+            location: {lat: 41.87225, lng: -87.64927}
         }
         // new map
         var map = new 
-        google.maps.Map(document.getElementById('map'), options);
+        google.maps.Map(document.getElementById("map"), options);
 
-
-
-        /*
         // add marker
         var marker = new google.maps.Marker({
-            position: {lat: 41.87225, lng: -87.64927},
+            position: location,
             map: map
         });
 
-        var infoWindow = new google.maps.InfoWindow({
-            content: '<h1> Info </h1>'
-        })
+        // var infoWindow = new google.maps.InfoWindow({
+        //     content: '<h1> Info </h1>'
+        // })
 
-        marker.addListener('click', function(){
-            infoWindow.open(map, marker);
-        });
-        */
-
-        addMarker({lat: 41.87225, lng: -87.64927});
-
-       //add marker function
-       function addMarker(coords){
-        var marker = new google.maps.Marker({
-            position: coords,
-            map: map
-        });
-       }
-    } 
+        // marker.addListen('click', function(){
+        //     infoWindow.open(map, marker);
+        // });
+    }
 </script>
 <script async defer src="http://maps.googleapis.com/maps/api/
 js?key=AIzaSyAIAmPKwIcfkVRO2HybHwAj5B8G2c-Q940&callback=initMap"></script>
