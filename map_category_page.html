@@ -46,15 +46,38 @@
         });
         */
 
-        addMarker({lat: 41.87225, lng: -87.64927});
+
+
+
+        // array of markers
+        
+
+
+        addMarker( { 
+            coords: {lat: 41.87225, lng: -87.64927},
+            content: '<h1> Info </h1>'
+        });
 
        //add marker function
-       function addMarker(coords){
+       function addMarker(props){
         var marker = new google.maps.Marker({
-            position: coords,
+            position: props.coords,
             map: map
         });
+
+               //check content 
+       if(props.content){
+        var infoWindow = new google.maps.InfoWindow({
+            content: props.content
+        })
+
+        marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+        });
        }
+
+       }
+
     } 
 </script>
 <script async defer src="http://maps.googleapis.com/maps/api/
