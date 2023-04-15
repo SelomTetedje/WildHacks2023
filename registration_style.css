@@ -1,11 +1,11 @@
 body {
-    background-color: white;
+    background-color: #caf0f8;
 }
 
 h1 {
     text-align: center;
     vertical-align: super;
-    color: black;
+    color: #0077b6;
 }
 
 #nextBtn {
