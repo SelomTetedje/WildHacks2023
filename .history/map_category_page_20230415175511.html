@@ -3,18 +3,19 @@
 <head>
     <title>School Map</title>
     <style>
-        ** {
-        margin: 0;
-        padding: 0;
-    }
-        #map {
-            height: 100vh;
-            width: 60%;
+        *{
+            margin: 0;
+            padding: 0;
         }
-        /* #map {
+        /* @media screen and (max-width: 768px) {
+            #map {
+            height: 500px;
+            }
+        } */
+        #map {
             height: 1000px;
             width: 60%;
-        } */
+        }
     </style>
 </head>
 <body>
@@ -61,13 +62,13 @@
         // array of markers
         var markers = [
         { 
-            coords: {lat: 41.87192, lng: -87.64925},
+            coords: {lat: 41.87225, lng: -87.64927},
             content: '<h1> Uic Quad </h1>',
             location_name: "Uic Quad"
         },
 
         { 
-            coords: {lat: 41.87268, lng: -87.64631},
+            coords: {lat: 41.87281, lng: -87.64638},
             content: '<h1> Uic Rec </h1>',
             location_name: "Uic rec"
         }
