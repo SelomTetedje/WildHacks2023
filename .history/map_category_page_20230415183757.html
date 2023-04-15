@@ -24,24 +24,11 @@
 <script>
     function initMap() {
         // map options
-        var center = new google.maps.LatLng(41.87225, -87.64927);
-        var width = 0.1; // Degrees of longitude
-        var height = 0.05; // Degrees of latitude
-        var sw = new google.maps.LatLng(center.lat() - (height / 2), center.lng() - (width / 2));
-        var ne = new google.maps.LatLng(center.lat() + (height / 2), center.lng() + (width / 2));
-
-        // Define the bounds of the rectangular region
-        var bounds = new google.maps.LatLngBounds(sw, ne);
         var options = {
             zoom: 17,
-            gestureHandling: "greedy",
             center: {lat: 41.87225, lng: -87.64927},
-            maxZoom: 19,
-            minZoom: 17,
-            restriction: {
-                latLngBounds: bounds,
-                 strictBounds: true
-            }
+            maxZoom: 17,
+            minZoom: 15
         }
         // new map
         var map = new 
