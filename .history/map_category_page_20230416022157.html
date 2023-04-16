@@ -176,35 +176,45 @@ const editButton = document.getElementById("edit-button");
             location_name: "Uic rec"
         }
     ];
-    var mutable_and_unmutable = markers
-    // loop through markers
-    for(var i = 0; i < mutable_and_unmutable.length; i++){
-        // add marker
-        addMarker(mutable_and_unmutable[i]);
-    }
 
+    // loop through markers
+    for(var i = 0; i < markers.length; i++){
+        // add marker
+        addMarker(markers[i]);
+    }
+    var userMarker;
+    var userMarker_bool = true;
    //add marker function
    function addMarker(props){
-        if(mutable_and_unmutable.length == markers.length){
-        var marker = new google.maps.Marker({
-            position: props.coords,
-            map: map
-        });
-        if(!props.content){
-            props.content = "<h1> N/A </h1>";
-        }
-        // var newmarker = {
-        //     coords: props.position,
-        //     content: "<h1> N/A </h1>",
-        //     location_name: "N?A"
-        // }
-        // markers.push(newmarker);
-    }
+        if(userMarker_first == true){
 
-        // for(var i = 0; i < mutable_and_unmutable.length; i++){
-        // // add marker
-        // addMarker(mutable_and_unmutable[i]);
-        // }
+            var marker = new google.maps.Marker({
+                position: props.coords,
+                map: map
+            });
+            userMarker_first = false;
+        }
+        else{
+            // marker = null;
+            var marker = new google.maps.Marker({
+                position: props.coords,
+                map: map
+            });
+        }
+
+
+
+        // if (userMarker_bool) {
+        // // update the position of the existing marker
+        // userMarker.setPosition(props.coords);
+        // } 
+        // else {
+        // // create a new marker
+        // userMarker = new google.maps.Marker({
+        //     position: props.coords,
+        //     map: map
+        // },
+        // userMarker_bool = true);
 
         //check content 
         if(props.content){
@@ -215,12 +225,9 @@ const editButton = document.getElementById("edit-button");
             marker.addListener('click', function(){
                 infoWindow.open(map, marker);
             });
-
         }
    }
 }
-    
 
 </script>
  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIAmPKwIcfkVRO2HybHwAj5B8G2c-Q940&callback=initMap"> </script>
-

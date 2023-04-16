@@ -68,32 +68,20 @@
     <form id="my-form">
         <label for="access">Select General public Access:</label>
         <select id="access" name="access">
-            <option value="N/A">N/A</option>
             <option value="On Campus Residents">On Campus Residents</option>
             <option value="General Public">General Public</option>
         </select><br><br>
         <label for="space">Select use of space:</label>
         <select id="space" name="space">
-            <option value="N/A">N/A</option>
             <option value="study">study</option>
             <option value="hangout">hangout</option>
             <option value="both">both</option>
         </select><br><br>
         <label for="food">Select food restrictions:</label>
         <select id="food" name="food">
-            <option value="N/A">N/A</option>
             <option value="No restrictions">No restrictions</option>
             <option value="restrictions">restrictions</option>
         </select><br><br>
-        <label for="food">Select Star rating:</label>
-        <select id="star" name="star">
-            <option value="N/A">N/A</option>
-            <option value=1>1 star</option>
-            <option value=2>2 star</option>
-            <option value=3>3 star</option>
-            <option value=4>4 star</option>
-            <option value=5>5 star</option>
-        </select><br><br>   
         <label for="comments">Leave a comment:</label>
         <textarea id="comments" name="comments"></textarea><br><br>
         <input type="submit" value="Submit">
@@ -108,8 +96,7 @@ const editButton = document.getElementById("edit-button");
     
         editButton.addEventListener("click", () => {
             event.stopPropagation();
-            form.style.top = form.style.top == "50%" ? "200%" : "50%";
-            form.comments.value = "";
+            form.style.top = form.style.top == "50%" ? "200%" : "50%"
         });
     
         form.addEventListener("submit", handleSubmit);
@@ -176,35 +163,19 @@ const editButton = document.getElementById("edit-button");
             location_name: "Uic rec"
         }
     ];
-    var mutable_and_unmutable = markers
+
     // loop through markers
-    for(var i = 0; i < mutable_and_unmutable.length; i++){
+    for(var i = 0; i < markers.length; i++){
         // add marker
-        addMarker(mutable_and_unmutable[i]);
+        addMarker(markers[i]);
     }
 
    //add marker function
    function addMarker(props){
-        if(mutable_and_unmutable.length == markers.length){
         var marker = new google.maps.Marker({
             position: props.coords,
             map: map
         });
-        if(!props.content){
-            props.content = "<h1> N/A </h1>";
-        }
-        // var newmarker = {
-        //     coords: props.position,
-        //     content: "<h1> N/A </h1>",
-        //     location_name: "N?A"
-        // }
-        // markers.push(newmarker);
-    }
-
-        // for(var i = 0; i < mutable_and_unmutable.length; i++){
-        // // add marker
-        // addMarker(mutable_and_unmutable[i]);
-        // }
 
         //check content 
         if(props.content){
@@ -215,12 +186,10 @@ const editButton = document.getElementById("edit-button");
             marker.addListener('click', function(){
                 infoWindow.open(map, marker);
             });
-
         }
    }
 }
-    
 
 </script>
  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIAmPKwIcfkVRO2HybHwAj5B8G2c-Q940&callback=initMap"> </script>
-
+ 

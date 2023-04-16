@@ -190,15 +190,16 @@ const editButton = document.getElementById("edit-button");
             position: props.coords,
             map: map
         });
-        if(!props.content){
-            props.content = "<h1> N/A </h1>";
-        }
+
         // var newmarker = {
         //     coords: props.position,
         //     content: "<h1> N/A </h1>",
         //     location_name: "N?A"
         // }
         // markers.push(newmarker);
+    }
+    if( (props.content = "") && (markers.length > 2) ){
+        props.content = "<h1> N/A </h1>";
     }
 
         // for(var i = 0; i < mutable_and_unmutable.length; i++){

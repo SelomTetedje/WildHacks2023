@@ -185,21 +185,10 @@ const editButton = document.getElementById("edit-button");
 
    //add marker function
    function addMarker(props){
-        if(mutable_and_unmutable.length == markers.length){
         var marker = new google.maps.Marker({
             position: props.coords,
             map: map
         });
-        if(!props.content){
-            props.content = "<h1> N/A </h1>";
-        }
-        // var newmarker = {
-        //     coords: props.position,
-        //     content: "<h1> N/A </h1>",
-        //     location_name: "N?A"
-        // }
-        // markers.push(newmarker);
-    }
 
         // for(var i = 0; i < mutable_and_unmutable.length; i++){
         // // add marker
@@ -215,7 +204,7 @@ const editButton = document.getElementById("edit-button");
             marker.addListener('click', function(){
                 infoWindow.open(map, marker);
             });
-
+            
         }
    }
 }

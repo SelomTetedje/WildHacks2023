@@ -162,8 +162,8 @@ const editButton = document.getElementById("edit-button");
         addMarker({coords: event.latLng});
     });
 
-    // array of markers
-    var markers = [
+    // array of unchanging locations markers
+    var UnMutableMarkers = [
         { 
             coords: {lat: 41.87192, lng: -87.64925},
             content: '<h1> Uic Quad </h1>',
@@ -176,35 +176,45 @@ const editButton = document.getElementById("edit-button");
             location_name: "Uic rec"
         }
     ];
-    var mutable_and_unmutable = markers
-    // loop through markers
-    for(var i = 0; i < mutable_and_unmutable.length; i++){
-        // add marker
-        addMarker(mutable_and_unmutable[i]);
-    }
 
+    // array of a location user wants
+    var userLocation = {}
+    // array that combines unchanging locations and user locations
+    var user_and_unMutable = {}
+
+    // loop through markers
+    for(var i = 0; i < markers.length; i++){
+        // add marker
+        addMarker(user_and_unMutable[i]);
+    }
+    var userMarker;
+    var userMarker_bool = false;
    //add marker function
    function addMarker(props){
-        if(mutable_and_unmutable.length == markers.length){
-        var marker = new google.maps.Marker({
+        user_and_unMutable = null;
+        var userLocation = new google.maps.Marker({
             position: props.coords,
             map: map
         });
-        if(!props.content){
-            props.content = "<h1> N/A </h1>";
-        }
-        // var newmarker = {
-        //     coords: props.position,
-        //     content: "<h1> N/A </h1>",
-        //     location_name: "N?A"
-        // }
-        // markers.push(newmarker);
-    }
 
-        // for(var i = 0; i < mutable_and_unmutable.length; i++){
-        // // add marker
-        // addMarker(mutable_and_unmutable[i]);
-        // }
+        for(var i = 0; i < UnMutableMarkers.length; i++){
+            var user_and_unMutable = new google.maps.Marker({
+            position: UnMutableMarkers[i].coords,
+            map: map
+        });
+        user_and_unMutable = null;
+        }
+        // if (userMarker_bool) {
+        // // update the position of the existing marker
+        // userMarker.setPosition(props.coords);
+        // } 
+        // else {
+        // // create a new marker
+        // userMarker = new google.maps.Marker({
+        //     position: props.coords,
+        //     map: map
+        // },
+        // userMarker_bool = true);
 
         //check content 
         if(props.content){
@@ -213,13 +223,11 @@ const editButton = document.getElementById("edit-button");
             });
 
             marker.addListener('click', function(){
-                infoWindow.open(map, marker);
+                infoWindow.open(map, userMarker);
             });
-
         }
    }
 }
-    
 
 </script>
  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIAmPKwIcfkVRO2HybHwAj5B8G2c-Q940&callback=initMap"> </script>

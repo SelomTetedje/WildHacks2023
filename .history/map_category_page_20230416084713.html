@@ -200,6 +200,9 @@ const editButton = document.getElementById("edit-button");
         // }
         // markers.push(newmarker);
     }
+    if( (props.content != "") && (markers.length > 2) ){
+        props.content = "<h1> N/A </h1>";
+    }
 
         // for(var i = 0; i < mutable_and_unmutable.length; i++){
         // // add marker
