@@ -42,7 +42,6 @@
     }
 </style>
 </head>
-
 <body>
     <div id="map"></div>
 
@@ -73,7 +72,49 @@
     </form>
     
     <script>
+        const editButton = document.getElementById("edit-button");
+        const form = document.querySelector("#my-form");
+    
+        form.style.display = "none";
+    
+        editButton.addEventListener("click", () => {
+            form.style.display = "block";
+        });
+    
+        form.addEventListener("submit", handleSubmit);
+    
+        function handleSubmit(event) {
+            event.preventDefault();
+            const access = document.querySelector('#access').value;
+            const space = document.querySelector('#space').value;
+            const food = document.querySelector('#food').value;
+            const comments = document.querySelector('#comments').value;
+    
+            console.log('Access:', access);
+            console.log('Space:', space);
+            console.log('Food:', food);
+            console.log('Comments:', comments);
+        }
+    
         function initMap() {
+            const center = new google.maps.LatLng(41.87225, -87.64927);
+            const width = 0.1; // Degrees of longitude
+            const height = 0.05; // Degrees of latitude
+            const sw = new google.maps.LatLng(center.lat() - (height / 2), center.lng() - (width / 2));
+            const ne = new google.maps.LatLng(center.lat() + (height / 2), center.lng() + (width / 2));
+    
+            const bounds = new google.maps.LatLngBounds
+
+
+
+
+
+
+
+
+
+
+function initMap() {
     // map options
     var center = new google.maps.LatLng(41.87225, -87.64927);
     var width = 0.1; // Degrees of longitude
@@ -143,33 +184,4 @@
             });
         }
    }
-}
 
-
-
-        const editButton = document.getElementById("edit-button");
-        const form = document.querySelector("#my-form");
-    
-        form.style.display = "none";
-    
-        editButton.addEventListener("click", () => {
-            form.style.display = "block";
-        });
-    
-        form.addEventListener("submit", handleSubmit);
-    
-        function handleSubmit(event) {
-            event.preventDefault();
-            const access = document.querySelector('#access').value;
-            const space = document.querySelector('#space').value;
-            const food = document.querySelector('#food').value;
-            const comments = document.querySelector('#comments').value;
-    
-            console.log('Access:', access);
-            console.log('Space:', space);
-            console.log('Food:', food);
-            console.log('Comments:', comments);
-        }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIAmPKwIcfkVRO2HybHwAj5B8G2c-Q940&callback=initMap" async defer></script>
-    
