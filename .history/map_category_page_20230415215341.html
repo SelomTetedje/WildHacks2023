@@ -50,11 +50,6 @@
 <div class="button">
     <a href="#" id="edit-button">Edit</a>
 </div>
-<style>
-    form {
-      float: right;
-    }
-  </style>
 <form>
     <label for="access">Select General public Access:</label>
     <select id="access" name="access">
@@ -77,11 +72,11 @@
     <input type="submit" value="Submit">
   </form>
     </script>
-    <!-- // JavaScript code to handle form submission
+    // JavaScript code to handle form submission
     const form = document.querySelector('form');
-    form.addEventListener('submit', handleSubmit); -->
+    form.addEventListener('submit', handleSubmit);
   
-    <!-- function handleSubmit(event) {
+    function handleSubmit(event) {
       event.preventDefault();
       const access = document.querySelector('#access').value;
       const space = document.querySelector('#space').value;
@@ -92,8 +87,7 @@
       console.log('Space:', space);
       console.log('Food:', food);
       console.log('Comments:', comments);
-    } -->
-
+    }
     function initMap() {
         // map options
         var center = new google.maps.LatLng(41.87225, -87.64927);
@@ -164,22 +158,7 @@
                 });
             }
        }
-       // JavaScript code to handle form submission
-    const form = document.querySelector('form');
-    form.addEventListener('submit', handleSubmit);
 
-       function handleSubmit(event) {
-        event.preventDefault();
-        const access = document.querySelector('#access').value;
-        const space = document.querySelector('#space').value;
-        const food = document.querySelector('#food').value;
-        const comments = document.querySelector('#comments').value;
-        // Do something with the form data here
-        console.log('Access:', access);
-        console.log('Space:', space);
-        console.log('Food:', food);
-        console.log('Comments:', comments);
-      }
     } 
 </script>
 
