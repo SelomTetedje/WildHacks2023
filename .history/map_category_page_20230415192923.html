@@ -36,27 +36,49 @@
     function initMap() {
         // map options
         var center = new google.maps.LatLng(41.87225, -87.64927);
-        var latDistance = 0.3; // 0.3 degrees of latitude
-        var lngDistance = 0.5; // 0.5 degrees of longitude
+        var latDistance = 0.1; // 0.3 degrees of latitude
+        var lngDistance = 0.3; // 0.5 degrees of longitude
         var sw = new google.maps.LatLng(center.lat() - (latDistance / 2), center.lng() - (lngDistance / 2));
         var ne = new google.maps.LatLng(center.lat() + (latDistance / 2), center.lng() + (lngDistance / 2));
-
+        
         // Create the boundary object that restricts the map to the specified area
         var maxBounds = new google.maps.LatLngBounds(sw, ne);
 
-        // Define the bounds of the rectangular region
-        //var bounds = new google.maps.LatLngBounds(sw, ne);
         var options = {
             zoom: 17,
-            gestureHandling: "greedy",
+            gestureHandling: "cooperative",
             center: {lat: 41.87225, lng: -87.64927},
             maxZoom: 18,
-            minZoom: 17
+            minZoom: 17,
         }
+
         // Create the map object
         var map = new google.maps.Map(document.getElementById("map"), options);
+        // Set the map bounds
+        map.fitBounds(maxBounds);
+
+        // Listen for the idle event
+        google.maps.event.addListener(map, 'idle', function() {
+        // Get the map bounds
+        var bounds = map.getBounds();
+        
+        // Check if the map is within the bounds
+        if (!maxBounds.contains(bounds.getCenter())) {
+            // Reposition the map within the bounds
+            var center = bounds.getCenter();
+            var lat = center.lat();
+            var lng = center.lng();
+            var newLat = Math.max(sw.lat(), Math.min(ne.lat(), lat));
+            var newLng = Math.max(sw.lng(), Math.min(ne.lng(), lng));
+            map.setCenter(new google.maps.LatLng(newLat, newLng));
+        }
+    });
+}
 
 
+        // // new map
+        // var map = new 
+        // google.maps.Map(document.getElementById('map'), options);
 
         // listen for click on map
         google.maps.event.addListener(map, 'click', 
@@ -64,6 +86,22 @@
             // add marker
             addMarker({coords: event.latLng})
         });
+
+        /*
+        // add marker
+        var marker = new google.maps.Marker({
+            position: {lat: 41.87225, lng: -87.64927},
+            map: map
+        });
+
+        var infoWindow = new google.maps.InfoWindow({
+            content: '<h1> Info </h1>'
+        })
+
+        marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+        });
+        */
 
 
 

@@ -36,27 +36,27 @@
     function initMap() {
         // map options
         var center = new google.maps.LatLng(41.87225, -87.64927);
-        var latDistance = 0.3; // 0.3 degrees of latitude
-        var lngDistance = 0.5; // 0.5 degrees of longitude
-        var sw = new google.maps.LatLng(center.lat() - (latDistance / 2), center.lng() - (lngDistance / 2));
-        var ne = new google.maps.LatLng(center.lat() + (latDistance / 2), center.lng() + (lngDistance / 2));
-
-        // Create the boundary object that restricts the map to the specified area
-        var maxBounds = new google.maps.LatLngBounds(sw, ne);
+        var width = 0.1; // Degrees of longitude
+        var height = 0.05; // Degrees of latitude
+        var sw = new google.maps.LatLng(center.lat() - (height / 2), center.lng() - (width / 2));
+        var ne = new google.maps.LatLng(center.lat() + (height / 2), center.lng() + (width / 2));
 
         // Define the bounds of the rectangular region
-        //var bounds = new google.maps.LatLngBounds(sw, ne);
+        var bounds = new google.maps.LatLngBounds(sw, ne);
         var options = {
             zoom: 17,
             gestureHandling: "greedy",
             center: {lat: 41.87225, lng: -87.64927},
             maxZoom: 18,
-            minZoom: 17
+            minZoom: 17,
+            restriction: {
+                latLngBounds: bounds,
+                 strictBounds: true
+            }
         }
-        // Create the map object
-        var map = new google.maps.Map(document.getElementById("map"), options);
-
-
+        // new map
+        var map = new 
+        google.maps.Map(document.getElementById('map'), options);
 
         // listen for click on map
         google.maps.event.addListener(map, 'click', 
@@ -64,6 +64,22 @@
             // add marker
             addMarker({coords: event.latLng})
         });
+
+        /*
+        // add marker
+        var marker = new google.maps.Marker({
+            position: {lat: 41.87225, lng: -87.64927},
+            map: map
+        });
+
+        var infoWindow = new google.maps.InfoWindow({
+            content: '<h1> Info </h1>'
+        })
+
+        marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+        });
+        */
 
 
 

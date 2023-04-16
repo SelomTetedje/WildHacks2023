@@ -51,12 +51,34 @@
             gestureHandling: "greedy",
             center: {lat: 41.87225, lng: -87.64927},
             maxZoom: 18,
-            minZoom: 17
+            minZoom: 17,
+            // restriction: {
+            //     latLngBounds: maxBounds,
+            //      strictBounds: 
+            // }
         }
         // Create the map object
         var map = new google.maps.Map(document.getElementById("map"), options);
 
+        // Set the map bounds
+        map.fitBounds(maxBounds);
 
+        // Listen for the idle event
+        google.maps.event.addListener(map, 'idle', function() {
+        // Get the map bounds
+        var bounds = map.getBounds();
+        
+        // Check if the map is within the bounds
+        if (!maxBounds.contains(bounds.getCenter())){
+            // Reposition the map within the bounds
+            var center = bounds.getCenter();
+            var lat = center.lat();
+            var lng = center.lng();
+            var newLat = Math.max(sw.lat(), Math.min(ne.lat(), lat));
+            var newLng = Math.max(sw.lng(), Math.min(ne.lng(), lng));
+            map.setCenter(new google.maps.LatLng(newLat, newLng));
+            }
+        });
 
         // listen for click on map
         google.maps.event.addListener(map, 'click', 
