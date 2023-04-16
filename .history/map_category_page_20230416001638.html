@@ -43,15 +43,11 @@
 
     form {
     top: 50%;
-    left: 80%;
-    padding: 40px;
-    border-radius: 16px;
-    transform: translateX(-50%) translateY(-50%);
-    transition: 200ms ease all;
-
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    
     position: absolute;
-    background: white;
-    border: grey 2px solid;
+    background: red;
     z-index: 200;
 }
 
@@ -96,7 +92,7 @@ const editButton = document.getElementById("edit-button");
     
         editButton.addEventListener("click", () => {
             event.stopPropagation();
-            form.style.top = form.style.top == "50%" ? "200%" : "50%"
+            form.style.display = "inline";
         });
     
         form.addEventListener("submit", handleSubmit);

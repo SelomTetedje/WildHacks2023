@@ -11,7 +11,7 @@
 #map {
         height: 100vh;
         width: 800px;
-        /* position: fixed; */
+        position: fixed;
         bottom: 0;
         right: 0;
         border: 3px solid;
@@ -39,10 +39,10 @@
 
     form {
         float: right;
-        z-index:1;
     }
 </style>
 </head>
+
 <body>
     <div id="map"></div>
 
@@ -71,38 +71,25 @@
         <textarea id="comments" name="comments"></textarea><br><br>
         <input type="submit" value="Submit">
     </form>
-    
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+    async defer></script>
+
     <script>
-        const editButton = document.getElementById("edit-button");
-        const form = document.querySelector("#my-form");
-    
-        form.style.display = "none";
-    
-        editButton.addEventListener("click", () => {
-            form.style.display = "block";
-        });
-    
-        form.addEventListener("submit", handleSubmit);
-    
-        function handleSubmit(event) {
-            event.preventDefault();
-            const access = document.querySelector('#access').value;
-            const space = document.querySelector('#space').value;
-            const food = document.querySelector('#food').value;
-            const comments = document.querySelector('#comments').value;
-    
-            console.log('Access:', access);
-            console.log('Space:', space);
-            console.log('Food:', food);
-            console.log('Comments:', comments);
-        }
-    
         function initMap() {
-            const center = new google.maps.LatLng(41.87225, -87.64927);
-            const width = 0.1; // Degrees of longitude
-            const height = 0.05; // Degrees of latitude
-            const sw = new google.maps.LatLng(center.lat() - (height / 2), center.lng() - (width / 2));
-            const ne = new google.maps.LatLng(center.lat() + (height / 2), center.lng() + (width / 2));
-    
-            const bounds = new google.maps.LatLngBounds
+    // map options
+    var center = new google.maps.LatLng(41.87225, -87.64927);
+    var width = 0.1; // Degrees of longitude
+    var height = 0.05; // Degrees of latitude
+    var sw = new google.maps.LatLng(center.lat() - (height / 2), center.lng() - (width / 2));
+    var ne = new google.maps.LatLng(center.lat() + (height / 2), center.lng() + (width / 2));
+
+    // Define the bounds of the rectangular region
+    var bounds = new google.maps.LatLngBounds(sw, ne);
+    var options = {
+        zoom: 17,
+        gestureHandling: "greedy",
+        center: {lat: 41.87225, lng}
+    }
+}
     

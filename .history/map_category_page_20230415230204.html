@@ -10,19 +10,18 @@
 /*#################################### */
 #map {
         height: 100vh;
-        width: 60%;
-        position: relative;
+        width: 700px;
+        position: fixed;
         bottom: 0;
         right: 0;
         border: 3px solid;
-        z-index: 1;
     }
 
     body {
         background-color: #caf0f8;
     }
 
-    .button{
+    .button {
         background-color: #4CAF50; /* Green */
         border: none;
         color: purple;
@@ -36,88 +35,16 @@
         top: 10%;
         right: 15%;
         transform: translateY(-50%);
-        /* float: right; */
-        /* position: relative;
-        z-index: 200; */
     }
 
     form {
-    top: 50%;
-    left: 80%;
-    padding: 40px;
-    border-radius: 16px;
-    transform: translateX(-50%) translateY(-50%);
-    transition: 200ms ease all;
-
-    position: absolute;
-    background: white;
-    border: grey 2px solid;
-    z-index: 200;
-}
-
+        float: right;
+    }
 </style>
 </head>
 
 <body>
-    <div id="map"></div>
-
-    <div class="button">
-        <a href="#" id="edit-button">Edit</a>
-    </div>
-    
-    <form id="my-form">
-        <label for="access">Select General public Access:</label>
-        <select id="access" name="access">
-            <option value="On Campus Residents">On Campus Residents</option>
-            <option value="General Public">General Public</option>
-        </select><br><br>
-        <label for="space">Select use of space:</label>
-        <select id="space" name="space">
-            <option value="study">study</option>
-            <option value="hangout">hangout</option>
-            <option value="both">both</option>
-        </select><br><br>
-        <label for="food">Select food restrictions:</label>
-        <select id="food" name="food">
-            <option value="No restrictions">No restrictions</option>
-            <option value="restrictions">restrictions</option>
-        </select><br><br>
-        <label for="comments">Leave a comment:</label>
-        <textarea id="comments" name="comments"></textarea><br><br>
-        <input type="submit" value="Submit">
-    </form>
-    
     <script>
-
-const editButton = document.getElementById("edit-button");
-        const form = document.querySelector("#my-form");
-    
-        form.style.display = "inline";
-    
-        editButton.addEventListener("click", () => {
-            event.stopPropagation();
-            form.style.top = form.style.top == "50%" ? "200%" : "50%"
-        });
-    
-        form.addEventListener("submit", handleSubmit);
-    
-        function handleSubmit(event) {
-            event.preventDefault();
-            const access = document.querySelector('#access').value;
-            const space = document.querySelector('#space').value;
-            const food = document.querySelector('#food').value;
-            const comments = document.querySelector('#comments').value;
-    
-            console.log('Access:', access);
-            console.log('Space:', space);
-            console.log('Food:', food);
-            console.log('Comments:', comments);
-        }
-    // </script>
-
-    <script>
-
-
         function initMap() {
     // map options
     var center = new google.maps.LatLng(41.87225, -87.64927);
@@ -190,9 +117,9 @@ const editButton = document.getElementById("edit-button");
    }
 }
 
-</script>
- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIAmPKwIcfkVRO2HybHwAj5B8G2c-Q940&callback=initMap"> </script>
-    
+<script async defer 
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIAmPKwIcfkVRO2HybHwAj5B8G2c-Q940&callback=initMap" /></script>
+
 
 
 
